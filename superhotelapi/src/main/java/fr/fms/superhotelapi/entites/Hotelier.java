@@ -7,7 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Data
 @Entity
@@ -21,7 +23,7 @@ public class Hotelier implements Serializable {
     private String lastname;
 
     @OneToMany(mappedBy = "hotelier") @JsonIgnore
-    private Collection<Hotel> hotels;
+    private List<Hotel> hotels = new ArrayList<>();
 
     public Hotelier(Long id, String firstname, String lastname) {
         this.id = id;

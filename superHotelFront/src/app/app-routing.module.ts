@@ -4,6 +4,9 @@ import { HomeComponent } from './components/home/home.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { LoginComponent } from './components/login/login.component';
+import { CityComponent } from './components/admin/city/city.component';
+import { AuthGuardService } from './service/auth-guard.service';
+import { HoteliersComponent } from './components/admin/hoteliers/hoteliers.component';
 
 const routes: Routes = [
   {
@@ -16,11 +19,30 @@ const routes: Routes = [
   },
   {
     path: 'hotel/:id',
-    component: HotelComponent
+    component: HotelComponent,
   },
   {
     path: 'login',
     component: LoginComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'admin/cities',
+    component: CityComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'admin/hoteliers',
+    component: HoteliersComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: 'admin',
+    redirectTo: '/admin/cities',
+    pathMatch: 'full',
   },
   {
     path: '',

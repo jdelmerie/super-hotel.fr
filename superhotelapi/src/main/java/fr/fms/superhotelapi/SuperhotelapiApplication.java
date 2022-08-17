@@ -77,5 +77,7 @@ public class SuperhotelapiApplication implements CommandLineRunner {
 		hotelService.save(new Hotel(null, "SH Cité des vins", "Centre ville Quicones", "citedesvinsbordeaux@superhotel.fr", "0123456789", "noimage.png", 50, 3, bordeeax, hotMama));
 		hotelService.save(new Hotel(null, "SH Tour Eiffel", "Rive gauche", "toureiffelparis@superhotel.fr", "0123456789", "noimage.png", 22, 5, paris, hotNel));
 		hotelService.save(new Hotel(null, "SH Montparnasse", "Bd de Vaugirard", "parismontparnasse@superhotel.fr", "0123456789", "noimage.png", 15, 4, nice, hotNel));
+
+
 	}
 }

@@ -8,11 +8,12 @@ import { TokenService } from './token.service';
 @Injectable({
   providedIn: 'root',
 })
-export class AuthentificationService implements CanActivate {
+export class AuthentificationService {
   isLogged: boolean = false;
   hasAdminRole: boolean = false;
   hasHotelierRole: boolean = false;
   hasUserRole: boolean = false;
+  userRole: string = '';
 
   constructor(
     public router: Router,
@@ -33,10 +34,11 @@ export class AuthentificationService implements CanActivate {
     if (jwt !== null) {
       let decodedJwtJsonData = window.atob(jwt?.split('.')[1]);
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
-        for (let r of decodedJwtData.roles) {
-          if (r == 'ROLE_ADMIN') {
-            this.hasAdminRole = true;
-          }
+      for (let r of decodedJwtData.roles) {
+        if (r == 'ROLE_ADMIN') {
+          this.hasAdminRole = true;
+          this.userRole = 'ROLE_ADMIN';
+        }
       }
     }
     return this.hasAdminRole;
@@ -47,10 +49,11 @@ export class AuthentificationService implements CanActivate {
     if (jwt !== null) {
       let decodedJwtJsonData = window.atob(jwt?.split('.')[1]);
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
-        for (let r of decodedJwtData.roles) {
-          if (r == 'ROLE_HOTELIER') {
-            this.hasHotelierRole = true;
-          }
+      for (let r of decodedJwtData.roles) {
+        if (r == 'ROLE_HOTELIER') {
+          this.hasHotelierRole = true;
+          this.userRole = 'ROLE_HOTELIER';
+        }
       }
     }
     return this.hasHotelierRole;
@@ -61,20 +64,24 @@ export class AuthentificationService implements CanActivate {
     if (jwt !== null) {
       let decodedJwtJsonData = window.atob(jwt?.split('.')[1]);
       let decodedJwtData = JSON.parse(decodedJwtJsonData);
-        for (let r of decodedJwtData.roles) {
-          if (r == 'ROLE_USER') {
-            this.hasUserRole = true;
-          }
+      for (let r of decodedJwtData.roles) {
+        if (r == 'ROLE_USER') {
+          this.hasUserRole = true;
+          this.userRole = 'ROLE_USER';
+        }
       }
     }
     return this.hasUserRole;
   }
 
-  canActivate(isAuth: any): boolean {
-    if (!isAuth) {
-      this.router.navigateByUrl('/login');
-      return false;
+  checkIfLogged(): boolean {
+    if (this.tokenStorage.getToken()) {
+      this.isLogged = true;
     }
-    return true;
+    return this.isLogged;
+  }
+
+  getUserRole() {
+    return this.userRole;
   }
 }

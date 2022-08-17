@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item pe-2">
+      <a class="nav-link bg-danger text-white" routerLink="/admin/cities"
+        >Cities</a
+      >
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/hotels">Hotels</a>
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/hoteliers">Hoteliers</a>
+    </li>
+  </ul>
+
+  <div class="mt-5">
+    <ng-container *ngIf="(cities | keyvalue)?.length; else empty">
+      <div class="row">
+        <div class="col-10">
+          <h2>Cities</h2>
+        </div>
+        <div class="col-2">
+          <a class="btn btn-primary btn-sm disabled">Add a city</a>
+        </div>
+      </div>
+      <table class="table">
+        <thead class="table-dark">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">NAME</th>
+            <th scope="col">ZIPCODE</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let city of cities">
+            <th scope="row">{{ city.id }}</th>
+            <td>{{ city.name }}</td>
+            <td>{{ city.zipcode }}</td>
+            <td class="text-center">
+              <a class="btn btn-sm btn-warning disabled">Edit</a>    &nbsp;
+              <a href="" class="btn btn-sm btn-danger disabled">Delete</a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </ng-container>
+    <ng-template #empty>
+      <h5>Loading...</h5>
+    </ng-template>
+  </div>
+</div>

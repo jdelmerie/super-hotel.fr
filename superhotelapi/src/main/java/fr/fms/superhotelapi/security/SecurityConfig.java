@@ -1,5 +1,6 @@
 package fr.fms.superhotelapi.security;
 
+import fr.fms.superhotelapi.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -36,6 +37,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ROLE_HOTELIER = "ROLE_HOTELIER";
 
+    @Autowired
+    private UserServiceImpl userService;
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         PasswordEncoder passwordEncoder = passwordEncoder();
@@ -71,7 +74,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.PUT, "/hotelier/update/{id}").hasAuthority(ROLE_ADMIN)
                 .antMatchers(HttpMethod.GET, "/hotelier/all").hasAuthority(ROLE_ADMIN)
                 .anyRequest().authenticated();
-        http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean()));
+        http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean(), userService));
         http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);
     }
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 import { TokenService } from 'src/app/service/token.service';
 
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private formBuilder: FormBuilder,
     private auth: AuthentificationService,
-    private token: TokenService
+    private token: TokenService,
+    private router: Router
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', Validators.required],
@@ -23,13 +25,31 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.auth.checkIfLogged()) {
+      if (this.auth.isAdmin()) {
+        this.router.navigateByUrl('/admin');
+      }
+
+      if (this.auth.isHotelier()) {
+        // this.router.navigateByUrl('/');
+        console.log('components hotelier');
+      }
+
+      if (this.auth.isHotelier()) {
+        // this.router.navigateByUrl('/');
+        console.log('components user');
+      }
+    }
+  }
 
   onSubmit(form: FormGroup) {
     if (form.valid) {
       this.auth.login(form.value.email, form.value.password).subscribe({
         next: (data) => {
+          console.log(data);
           this.token.saveToken(data.token);
+          this.token.saveUserId(data.userId);
           window.location.reload();
         },
         error: () => (this.displayError = true),

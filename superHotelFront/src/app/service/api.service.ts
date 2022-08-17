@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { City } from '../models/city';
 import { Hotel } from '../models/hotel';
+import { Hotelier } from '../models/hotelier';
 import { TokenService } from './token.service';
 
 @Injectable({
@@ -38,10 +39,23 @@ export class ApiService {
   }
 
   public searchByCityName(search: string) {
-    return this.http.get<Hotel[]>(environment.host + '/hotel/city/search/' + search);
+    return this.http.get<Hotel[]>(
+      environment.host + '/hotel/city/search/' + search
+    );
   }
 
   public getHotel(id: number) {
     return this.http.get<Hotel>(environment.host + '/hotel/get/' + id);
+  }
+  
+  /**************************************************************
+   *
+   * HOTELIERS
+   *
+   **************************************************************/
+  public getHoteliers() {
+    return this.http.get<Hotelier[]>(environment.host + '/hotelier/all', {
+      headers: this.authHeader,
+    });
   }
 }

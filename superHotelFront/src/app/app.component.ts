@@ -22,22 +22,20 @@ export class AppComponent {
   ) {}
 
   ngOnInit(): void {
+    if (this.auth.checkIfLogged()) {
+      this.isLogged = true;
+    }
+
     if (this.auth.isAdmin()) {
       this.isAdmin = true;
-      this.isLogged = true;
-      console.log("un admin est co")
     }
 
     if (this.auth.isHotelier()) {
       this.isHotelier = true;
-      this.isLogged = true;
-      console.log("un hotelier est co")
     }
 
     if (this.auth.isUser()) {
       this.isUser = true;
-      this.isLogged = true;
-      console.log("un user est co")
     }
   }
 

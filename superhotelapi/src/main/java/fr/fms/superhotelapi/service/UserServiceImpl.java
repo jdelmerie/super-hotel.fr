@@ -33,4 +33,8 @@ public class UserServiceImpl implements APIService<Users> {
     public void delete(long id) {
 
     }
+
+    public Users getUserByEmail(String email) {
+        return usersRepository.findByEmail(email);
+    }
 }

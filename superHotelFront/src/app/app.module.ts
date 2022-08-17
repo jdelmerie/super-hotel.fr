@@ -8,9 +8,11 @@ import { HomeComponent } from './components/home/home.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { HotelComponent } from './components/hotel/hotel.component';
 import { LoginComponent } from './components/login/login.component';
+import { CityComponent } from './components/admin/city/city.component';
+import { HoteliersComponent } from './components/admin/hoteliers/hoteliers.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent],
+  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent, CityComponent, HoteliersComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

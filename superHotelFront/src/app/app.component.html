@@ -7,7 +7,7 @@
             <a class="px-4 d-none d-md-inline-block text-danger text-decoration-none" routerLink="/hotels">Hotels</a>
         </nav>
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto text-danger">
-            <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isAdmin">ADMIN</a>
+            <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isAdmin" routerLink="/admin">ADMIN</a>
             <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isHotelier">HOTELIER</a>
             <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isUser">USER</a>
             <a class="me-3 py-2 text-danger text-decoration-none" *ngIf="!isLogged" routerLink="/login">Login</a>
