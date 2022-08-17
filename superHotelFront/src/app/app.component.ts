@@ -14,6 +14,7 @@ export class AppComponent {
   isLogged: boolean = false;
   isAdmin: boolean = false;
   isHotelier: boolean = false;
+  isUser: boolean = false;
 
   constructor(
     private auth: AuthentificationService,
@@ -31,6 +32,12 @@ export class AppComponent {
       this.isHotelier = true;
       this.isLogged = true;
       console.log("un hotelier est co")
+    }
+
+    if (this.auth.isUser()) {
+      this.isUser = true;
+      this.isLogged = true;
+      console.log("un user est co")
     }
   }
 

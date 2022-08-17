@@ -9,7 +9,8 @@
         <nav class="d-inline-flex mt-2 mt-md-0 ms-md-auto text-danger">
             <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isAdmin">ADMIN</a>
             <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isHotelier">HOTELIER</a>
-            <a class="me-3 py-2 text-danger text-decoration-none" *ngIf="!isLogged">Login</a>
+            <a class="me-3 py-2 fw-bold text-danger text-decoration-none" *ngIf="isUser">USER</a>
+            <a class="me-3 py-2 text-danger text-decoration-none" *ngIf="!isLogged" routerLink="/login">Login</a>
             <a class="btn btn-sm btn-danger me-3 py-2 text-white text-decoration-none" *ngIf="isLogged" (click)="logout()">Logout</a>
         </nav>
     </div>

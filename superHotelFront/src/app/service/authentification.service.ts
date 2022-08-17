@@ -12,6 +12,7 @@ export class AuthentificationService implements CanActivate {
   isLogged: boolean = false;
   hasAdminRole: boolean = false;
   hasHotelierRole: boolean = false;
+  hasUserRole: boolean = false;
 
   constructor(
     public router: Router,
@@ -55,7 +56,19 @@ export class AuthentificationService implements CanActivate {
     return this.hasHotelierRole;
   }
 
-  
+  isUser(): boolean {
+    let jwt = this.tokenStorage.getToken();
+    if (jwt !== null) {
+      let decodedJwtJsonData = window.atob(jwt?.split('.')[1]);
+      let decodedJwtData = JSON.parse(decodedJwtJsonData);
+        for (let r of decodedJwtData.roles) {
+          if (r == 'ROLE_USER') {
+            this.hasUserRole = true;
+          }
+      }
+    }
+    return this.hasUserRole;
+  }
 
   canActivate(isAuth: any): boolean {
     if (!isAuth) {

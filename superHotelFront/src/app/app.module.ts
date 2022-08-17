@@ -7,9 +7,10 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { HotelsComponent } from './components/hotels/hotels.component';
 import { HotelComponent } from './components/hotel/hotel.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent],
+  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

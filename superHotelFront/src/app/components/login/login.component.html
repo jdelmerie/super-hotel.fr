@@ -1,0 +1,22 @@
+<div class="container mt-5 body-login text-center">
+    <div class="form-signin">
+        <form  [formGroup]="loginForm"
+        (ngSubmit)="onSubmit(loginForm)">
+            <h2 class="mb-3 fw-normal text-danger">Please login</h2>
+            <div class="form-floating">
+                <input type="email" name="email" class="form-control" id="floatingEmail"
+                    placeholder="name@example.com"  formControlName="email">
+                <label for="floatingEmail">Email address</label>
+            </div>
+            <div class="form-floating">
+                <input type="password" name="password" class="form-control" id="floatingPassword"    formControlName="password"
+                    placeholder="Password">
+                <label for="floatingPassword">Password</label>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="displayError">
+                Bad credentials
+            </div>
+            <button class="w-100 btn btn-lg btn-dark" type="submit">Submit</button>
+        </form>
+    </div>
+</div>
