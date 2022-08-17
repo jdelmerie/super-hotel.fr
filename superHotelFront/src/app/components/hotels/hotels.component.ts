@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { City } from 'src/app/models/city';
 import { Hotel } from 'src/app/models/hotel';
@@ -16,8 +17,13 @@ export class HotelsComponent implements OnInit {
   hotels: Hotel[] | undefined;
   error = null;
   url: string = environment.host + '/hotel/image/';
-
-  constructor(private api: ApiService, private router: Router) {}
+  myForm: FormGroup;
+  
+  constructor(private api: ApiService, private router: Router,  private formBuilder: FormBuilder) {
+    this.myForm = this.formBuilder.group({
+      search: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.getAllCities();
@@ -52,5 +58,14 @@ export class HotelsComponent implements OnInit {
 
   displayHotel(hotel: Hotel) {
     this.router.navigateByUrl('hotel/' + hotel.id);
+  }
+
+  onSearch(myForm: FormGroup) {
+    this.cityId = 0;
+    this.api.searchByCityName(myForm.value.search).subscribe({
+      next: (data) => (this.hotels = data),
+      error: (err) => (this.error = err.message),
+      complete: () => (this.error = null),
+    });
   }
 }

@@ -37,4 +37,8 @@ public class HotelServiceImpl implements APIService<Hotel> {
     public List<Hotel> getByCity(long id) {
         return hotelRepository.findByCityId(id);
     }
+
+    public List<Hotel> getBySearchCityName(String search){
+        return hotelRepository.findByCityNameContains(search);
+    }
 }

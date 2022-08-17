@@ -37,6 +37,10 @@ export class ApiService {
     return this.http.get<Hotel[]>(environment.host + '/hotel/city/' + id);
   }
 
+  public searchByCityName(search: string) {
+    return this.http.get<Hotel[]>(environment.host + '/hotel/city/search/' + search);
+  }
+
   public getHotel(id: number) {
     return this.http.get<Hotel>(environment.host + '/hotel/get/' + id);
   }
