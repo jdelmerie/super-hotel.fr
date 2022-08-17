@@ -8,7 +8,7 @@ export class Hotel {
   email: string;
   phone: string;
   image: string;
-  numberOfRoom: number;
+  numberOfRooms: number;
   numberOfStars: number;
   city: City;
   hotelier: Array<Hotelier>;
@@ -20,7 +20,7 @@ export class Hotel {
     email: string,
     phone: string,
     image: string,
-    numberOfRoom: number,
+    numberOfRooms: number,
     numberOfStars: number,
     city: City,
     hotelier: Array<Hotelier>
@@ -31,7 +31,7 @@ export class Hotel {
     this.email = email;
     this.phone = phone;
     this.image = image;
-    this.numberOfRoom = numberOfRoom;
+    this.numberOfRooms = numberOfRooms;
     this.numberOfStars = numberOfStars;
     this.city = city;
     this.hotelier = hotelier;

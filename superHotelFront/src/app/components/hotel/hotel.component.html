@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row mb-3">
+    <h1>{{ hotel?.name }} - {{ hotel?.city?.name }} </h1>
+  </div>
+  <div class="card mb-3" style="max-width: 540px">
+    <div class="row g-0">
+      <div class=>
+        <img [src]="url + hotel?.id" class="img-fluid" style="width: 100%"/>
+      </div>
+      <div class="col-md-12">
+        <div class="card-body">
+          <h5 class="card-title">{{hotel?.numberOfStars}} stars</h5>
+          <p class="card-text">
+            <strong>Address :</strong> {{hotel?.address }}, {{hotel?.city?.zipcode }} {{hotel?.city?.name }}<br>
+            <strong>Email :</strong> {{hotel?.address }} <br>
+            <strong>Phone :</strong> {{hotel?.phone }} <br>
+            <strong>Rooms available :</strong>   {{hotel?.numberOfRooms }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

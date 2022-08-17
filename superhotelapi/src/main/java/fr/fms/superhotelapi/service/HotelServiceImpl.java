@@ -33,4 +33,8 @@ public class HotelServiceImpl implements APIService<Hotel> {
     public void delete(long id) {
         hotelRepository.deleteById(id);
     }
+
+    public List<Hotel> getByCity(long id) {
+        return hotelRepository.findByCityId(id);
+    }
 }

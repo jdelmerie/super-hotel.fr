@@ -5,6 +5,8 @@ import fr.fms.superhotelapi.service.HotelServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:4200")
@@ -38,5 +40,16 @@ public class HotelController {
     @DeleteMapping("/delete/{id}")
     public void delete(@PathVariable("id") long id){
         hotelService.delete(id);
+    }
+
+    @GetMapping(path = "/image/{id}")
+    public byte[] getImage(@PathVariable("id") Long id) throws Exception {
+        Hotel hotel = hotelService.getOneById(id).get();
+        return Files.readAllBytes(Paths.get("uploads").resolve(hotel.getImage()));
+    }
+
+    @GetMapping("/city/{id}")
+    public List<Hotel> getHotelsByCity(@PathVariable("id") long id) {
+        return hotelService.getByCity(id);
     }
 }
