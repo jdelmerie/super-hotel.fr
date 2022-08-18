@@ -3,7 +3,9 @@ package fr.fms.superhotelapi.service;
 import fr.fms.superhotelapi.dao.HotelRepository;
 import fr.fms.superhotelapi.entites.Hotel;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
@@ -21,7 +23,8 @@ public class HotelServiceImpl implements APIService<Hotel> {
 
     @Override
     public Optional<Hotel> getOneById(long id) {
-        return Optional.of(hotelRepository.getById(id));
+//        return Optional.of(hotelRepository.getById(id));
+        return Optional.ofNullable(hotelRepository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND, "Resource not found")));
     }
 
     @Override
