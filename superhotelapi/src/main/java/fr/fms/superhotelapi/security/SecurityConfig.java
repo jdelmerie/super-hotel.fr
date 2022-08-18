@@ -73,6 +73,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE, "/hotelier/delete/{id}").hasAuthority(ROLE_ADMIN)
                 .antMatchers(HttpMethod.PUT, "/hotelier/update/{id}").hasAuthority(ROLE_ADMIN)
                 .antMatchers(HttpMethod.GET, "/hotelier/all").hasAuthority(ROLE_ADMIN)
+                .antMatchers(HttpMethod.GET, "/hotelier/get/{id}").hasAnyAuthority(ROLE_HOTELIER, ROLE_ADMIN)
+                .antMatchers(HttpMethod.GET, "/hotelier/getByUser/{userId}").hasAnyAuthority(ROLE_HOTELIER, ROLE_ADMIN)
+                .antMatchers(HttpMethod.GET, "/hotelier/{id}/hotels").hasAnyAuthority(ROLE_HOTELIER, ROLE_ADMIN)
                 .anyRequest().authenticated();
         http.addFilter(new JwtAuthenticationFilter(authenticationManagerBean(), userService));
         http.addFilterBefore(new JwtAuthorizationFilter(), UsernamePasswordAuthenticationFilter.class);

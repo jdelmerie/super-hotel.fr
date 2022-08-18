@@ -66,6 +66,12 @@ export class ApiService {
     });
   } 
 
+  public getHotelsByHotelierId(id:number) {
+    return this.http.get<Hotel[]>(environment.host + '/hotelier/' + id + '/hotels', {
+      headers: this.authHeader,
+    });
+  }
+
   /**************************************************************
    *
    * HOTELIERS
@@ -73,6 +79,12 @@ export class ApiService {
    **************************************************************/
   public getHoteliers() {
     return this.http.get<Hotelier[]>(environment.host + '/hotelier/all', {
+      headers: this.authHeader,
+    });
+  }
+
+  public getHotelierByUserId(id:number) {
+    return this.http.get<Hotelier>(environment.host + '/hotelier/getByUser/' + id, {
       headers: this.authHeader,
     });
   }

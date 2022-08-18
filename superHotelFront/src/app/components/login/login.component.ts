@@ -32,12 +32,10 @@ export class LoginComponent implements OnInit {
       }
 
       if (this.auth.isHotelier()) {
-        // this.router.navigateByUrl('/');
-        console.log('components hotelier');
+        this.router.navigateByUrl('/hotelier');
       }
 
       if (this.auth.isHotelier()) {
-        // this.router.navigateByUrl('/');
         console.log('components user');
       }
     }

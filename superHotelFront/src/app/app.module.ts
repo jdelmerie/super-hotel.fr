@@ -12,9 +12,12 @@ import { CityComponent } from './components/admin/city/city.component';
 import { HoteliersComponent } from './components/admin/hoteliers/hoteliers.component';
 import { HotelsAdminComponent } from './components/admin/hotels-admin/hotels-admin.component';
 import { HotelFormComponent } from './components/admin/hotel-form/hotel-form.component';
+import { HomeHotelierComponent } from './components/hoteliers/home-hotelier/home-hotelier.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HotelFormUpdateComponent } from './components/hoteliers/hotel-form-update/hotel-form-update.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent, CityComponent, HoteliersComponent, HotelsAdminComponent, HotelFormComponent],
+  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent, CityComponent, HoteliersComponent, HotelsAdminComponent, HotelFormComponent, HomeHotelierComponent, NotFoundComponent, HotelFormUpdateComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

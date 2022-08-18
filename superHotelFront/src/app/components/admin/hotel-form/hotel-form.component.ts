@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { City } from 'src/app/models/city';
 import { Hotel } from 'src/app/models/hotel';
 import { Hotelier } from 'src/app/models/hotelier';
+import { User } from 'src/app/models/user';
 import { ApiService } from 'src/app/service/api.service';
 import { AuthentificationService } from 'src/app/service/authentification.service';
 
@@ -89,7 +90,7 @@ export class HotelFormComponent implements OnInit {
         myForm.value.numberOfRooms,
         myForm.value.numberOfStars,
         new City(myForm.value.city, '', '', []),
-        new Hotelier(myForm.value.hotelier, '', '', [])
+        new Hotelier(myForm.value.hotelier, '', '', [], new User(0, "", "", "", false, []))
       );
 
       if (this.status) {

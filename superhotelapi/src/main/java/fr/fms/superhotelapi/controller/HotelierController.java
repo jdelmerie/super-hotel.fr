@@ -40,4 +40,14 @@ public class HotelierController {
     public void delete(@PathVariable("id") long id){
         hotelierService.delete(id);
     }
+
+    @GetMapping("/getByUser/{userId}")
+    public Hotelier getByUser(@PathVariable("userId") long userId){
+       return hotelierService.getByUserId(userId);
+    }
+
+    @GetMapping("/{id}/hotels")
+    public List<Hotel> getHotelsByHotelierId(@PathVariable("id") long id){
+        return hotelierService.getOneById(id).get().getHotels();
+    }
 }

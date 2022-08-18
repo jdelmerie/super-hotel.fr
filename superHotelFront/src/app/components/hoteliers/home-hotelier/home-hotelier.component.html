@@ -1,0 +1,34 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6">
+      <h3>Your hotels</h3>
+    </div>
+    <div class="col-6">
+      <h3>{{hotelier?.firstname + ' ' + hotelier?.lastname}}</h3>
+    </div>
+  </div>
+  <ng-container *ngIf="(hotels | keyvalue)?.length; else empty">
+    <div class="row mt-5">
+      <div class="col-sm-3 mb-3" *ngFor="let hotel of hotels">
+        <div class="card h-100 border-0" style="width: 20rem">
+          <img class="card-img-top" [src]="url + hotel.id" />
+          <div class="card-body">
+            <h5 class="card-title">
+              {{
+                hotel.name +
+                  " " +
+                  hotel.numberOfStars +
+                  "* - " +
+                  hotel.city.name
+              }}
+            </h5>
+            <a class="btn btn-sm btn-warning" (click)="onUpdate(hotel)">Edit</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #empty>
+    <h5>N/A</h5>
+  </ng-template>
+</div>

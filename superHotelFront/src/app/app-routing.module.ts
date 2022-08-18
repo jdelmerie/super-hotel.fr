@@ -9,6 +9,9 @@ import { AuthGuardService } from './service/auth-guard.service';
 import { HoteliersComponent } from './components/admin/hoteliers/hoteliers.component';
 import { HotelsAdminComponent } from './components/admin/hotels-admin/hotels-admin.component';
 import { HotelFormComponent } from './components/admin/hotel-form/hotel-form.component';
+import { HomeHotelierComponent } from './components/hoteliers/home-hotelier/home-hotelier.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
+import { HotelFormUpdateComponent } from './components/hoteliers/hotel-form-update/hotel-form-update.component';
 
 const routes: Routes = [
   {
@@ -53,6 +56,16 @@ const routes: Routes = [
     canActivate: [AuthGuardService],
   },
   {
+    path: 'hotelier',
+    component: HomeHotelierComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'hotelier/hotel/:id',
+    component: HotelFormUpdateComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
     path: 'admin',
     redirectTo: '/admin/hotels',
     pathMatch: 'full',
@@ -61,6 +74,14 @@ const routes: Routes = [
     path: '',
     redirectTo: '/home',
     pathMatch: 'full',
+  },
+  {
+    path: '404',
+    component: NotFoundComponent,
+  },
+  {
+    path: '**',
+    redirectTo: '/404',
   },
 ];
 

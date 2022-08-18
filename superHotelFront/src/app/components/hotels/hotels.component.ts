@@ -61,9 +61,11 @@ export class HotelsComponent implements OnInit {
   }
 
   onSearch(myForm: FormGroup) {
-    this.cityId = 0;
     this.api.searchByCityName(myForm.value.search).subscribe({
-      next: (data) => (this.hotels = data),
+      next: (data) => {
+        this.hotels = data;
+        this.cityId = data.length > 0 ? data[0].city.id : 0
+      },
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });

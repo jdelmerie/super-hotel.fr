@@ -22,13 +22,17 @@ public class Hotelier implements Serializable {
     private String firstname;
     private String lastname;
 
-    @OneToMany(mappedBy = "hotelier") @JsonIgnore
+    @OneToMany(mappedBy = "hotelier", fetch = FetchType.EAGER) @JsonIgnore
     private List<Hotel> hotels = new ArrayList<>();
 
-    public Hotelier(Long id, String firstname, String lastname) {
+    @OneToOne
+    private Users user;
+
+    public Hotelier(Long id, String firstname, String lastname, Users user) {
         this.id = id;
         this.firstname = firstname;
         this.lastname = lastname;
+        this.user = user;
     }
 
     @Override

@@ -33,4 +33,8 @@ public class HotelierServiceImpl implements APIService<Hotelier> {
     public void delete(long id) {
         hotelierRepository.deleteById(id);
     }
+
+    public Hotelier getByUserId(long userId){
+        return hotelierRepository.findByUserId(userId);
+    }
 }
