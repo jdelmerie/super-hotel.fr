@@ -54,7 +54,7 @@ const routes: Routes = [
   },
   {
     path: 'admin',
-    redirectTo: '/admin/cities',
+    redirectTo: '/admin/hotels',
     pathMatch: 'full',
   },
   {

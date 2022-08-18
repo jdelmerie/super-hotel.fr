@@ -60,6 +60,11 @@ export class ApiService {
     });
   }
   
+  public uploadImage(imageData: FormData) {
+    return this.http.post(environment.host + '/hotel/uploadImage', imageData, {
+      headers: this.authHeader,
+    });
+  } 
 
   /**************************************************************
    *

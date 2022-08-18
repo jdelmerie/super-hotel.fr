@@ -15,7 +15,8 @@ export class HotelsAdminComponent implements OnInit {
   hotels: Hotel[] | undefined;
   error: null | undefined;
   url: string = environment.host + '/hotel/image/';
-  
+  file: File | undefined;
+
   constructor(private auth: AuthentificationService, private router: Router, private api: ApiService) { }
 
   ngOnInit(): void {
@@ -40,5 +41,17 @@ export class HotelsAdminComponent implements OnInit {
 
   onUpdate(hotel: Hotel) {
     this.router.navigateByUrl('admin/hotel/' + hotel.id);
+  }
+
+  onFileChanged(event: any, hotelId: number) {
+    this.file = event.target.files[0];
+    const imageData = new FormData();
+    imageData.append('image', this.file as Blob);
+    imageData.append('hotelId', String(hotelId));
+    this.api.uploadImage(imageData).subscribe({
+      next: (data) => console.log(data),
+      error: (err) => (this.error = err.message),
+      complete: () => window.location.reload(),
+    });
   }
 }
