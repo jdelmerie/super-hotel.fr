@@ -7,6 +7,8 @@ import { LoginComponent } from './components/login/login.component';
 import { CityComponent } from './components/admin/city/city.component';
 import { AuthGuardService } from './service/auth-guard.service';
 import { HoteliersComponent } from './components/admin/hoteliers/hoteliers.component';
+import { HotelsAdminComponent } from './components/admin/hotels-admin/hotels-admin.component';
+import { HotelFormComponent } from './components/admin/hotel-form/hotel-form.component';
 
 const routes: Routes = [
   {
@@ -32,12 +34,23 @@ const routes: Routes = [
   {
     path: 'admin/cities',
     component: CityComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
   },
+  {
+    path: 'admin/hotel/:id',
+    component: HotelFormComponent,
+    canActivate: [AuthGuardService],
+  },
+
   {
     path: 'admin/hoteliers',
     component: HoteliersComponent,
-    canActivate: [AuthGuardService]
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'admin/hotels',
+    component: HotelsAdminComponent,
+    canActivate: [AuthGuardService],
   },
   {
     path: 'admin',

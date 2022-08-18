@@ -1,0 +1,137 @@
+<div class="container mt-5">
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/cities">Cities</a>
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link bg-danger text-white" routerLink="/admin/hotels"
+        >Hotels</a
+      >
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/hoteliers"
+        >Hoteliers</a
+      >
+    </li>
+  </ul>
+
+  <div class="mt-5">
+    <h2>{{ title }}</h2>
+    <form [formGroup]="myForm" (ngSubmit)="onSave(myForm)" >
+      <input type="hidden" class="form-control" id="id" formControlName="id" />
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="name" class="form-label">Name</label>
+          <input
+            type="text"
+            class="form-control"
+            id="name"
+            formControlName="name"
+          />
+          <span class="text-danger" *ngIf="myForm.get('name')?.errors"
+            >Name missing</span
+          >
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="city" class="form-label">City</label>
+          <select class="form-select" formControlName="city">
+            <option [ngValue]="null" disabled>Select a city</option>
+            <option *ngFor="let city of cities" [ngValue]="city.id">
+              {{ city.name }}
+            </option>
+          </select>
+          <span class="text-danger" *ngIf="myForm.get('city')?.errors"
+            >City not selected</span
+          >
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="numberOfStars" class="form-label">Number of stars</label>
+          <input
+            type="number"
+            class="form-control"
+            id="numberOfStars"
+            formControlName="numberOfStars"
+            min="1"
+            max="5"
+          />
+          <span class="text-danger" *ngIf="myForm.get('numberOfStars')?.errors"
+            >Number of stars missing</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="address" class="form-label">Address</label>
+          <input
+            type="text"
+            class="form-control"
+            id="address"
+            formControlName="address"
+          />
+          <span class="text-danger" *ngIf="myForm.get('address')?.errors"
+            >Address missing</span
+          >
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="email" class="form-label">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            id="email"
+            formControlName="email"
+          />
+          <span class="text-danger" *ngIf="myForm.get('email')?.errors"
+            >Email missing</span
+          >
+        </div>
+        <div class="mb-3 col-md-4">
+          <label for="phone" class="form-label">Phone</label>
+          <input
+            type="text"
+            class="form-control"
+            id="phone"
+            max="10"
+            formControlName="phone"
+          />
+          <span class="text-danger" *ngIf="myForm.get('phone')?.errors"
+            >Phone missing</span
+          >
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="hotelier" class="form-label">Hotelier</label>
+          <select class="form-select" formControlName="hotelier">
+            <option [ngValue]="null" disabled>Select a hotelier</option>
+            <option *ngFor="let hotelier of hoteliers" [ngValue]="hotelier.id">
+              {{ hotelier.firstname + ' ' + hotelier.lastname }}
+            </option>
+          </select>
+          <span class="text-danger" *ngIf="myForm.get('hotelier')?.errors"
+          >Hotelier missing</span
+        >
+        </div>
+        <div class="mb-3 col-md-4">
+            <label for="numberOfRooms" class="form-label">Number of rooms</label>
+            <input
+              type="number"
+              class="form-control"
+              id="numberOfRooms"
+              formControlName="numberOfRooms"
+              min="1"
+            />
+            <span class="text-danger" *ngIf="myForm.get('numberOfRooms')?.errors"
+              >Number of room missing</span
+            >
+          </div>
+      </div>
+      <button *ngIf="!status" type="submit" class="btn btn-primary">
+        Ajouter
+      </button>
+      <button *ngIf="status" type="submit" class="btn btn-primary">
+        Mise à jour
+      </button>
+      <div class="text-danger">{{ error }}</div>
+    </form>
+  </div>
+</div>

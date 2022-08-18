@@ -47,7 +47,20 @@ export class ApiService {
   public getHotel(id: number) {
     return this.http.get<Hotel>(environment.host + '/hotel/get/' + id);
   }
+
+  public addHotel(hotel: Hotel) {
+    return this.http.post<Hotel>(environment.host + '/hotel/add', hotel, {
+      headers: this.authHeader,
+    });
+  }
+
+  public updateHotel(hotel: Hotel) {
+    return this.http.put<Hotel>(environment.host + '/hotel/update/' + hotel.id, hotel, {
+      headers: this.authHeader,
+    });
+  }
   
+
   /**************************************************************
    *
    * HOTELIERS

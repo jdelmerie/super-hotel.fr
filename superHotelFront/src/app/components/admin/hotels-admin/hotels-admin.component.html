@@ -1,0 +1,46 @@
+<div class="container mt-5">
+  <ul class="nav nav-pills nav-fill">
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/cities">Cities</a>
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link bg-danger text-white" routerLink="/admin/hotels"
+        >Hotels</a
+      >
+    </li>
+    <li class="nav-item pe-2">
+      <a class="nav-link text-danger" routerLink="/admin/hoteliers"
+        >Hoteliers</a
+      >
+    </li>
+  </ul>
+
+  <div class="mt-5">
+    <div class="row">
+      <div class="col-10">
+        <h2>Hotels</h2>
+      </div>
+      <div class="col-2">
+        <a class="btn btn-primary btn-sm" routerLink="/admin/hotel/?">Add a hotel</a>
+      </div>
+    </div>
+    <ng-container *ngIf="(hotels | keyvalue)?.length; else empty">
+      <div class="row">
+        <div class="col-sm-3 mb-3" *ngFor="let hotel of hotels">
+          <div class="card h-100 border-0" style="width: 18rem">
+            <img class="card-img-top" [src]="url + hotel.id" />
+            <div class="card-body">
+              <h5 class="card-title">{{ hotel.name }} - {{hotel.city.name}}</h5>
+              <a class="btn btn-sm btn-success disabled">Upload</a>&nbsp;
+              <a class="btn btn-sm btn-warning" (click)="onUpdate(hotel)">Edit</a>&nbsp;
+              <a href="" class="btn btn-sm btn-danger disabled">Delete</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+    <ng-template #empty>
+      <h5>N/A</h5>
+    </ng-template>
+  </div>
+</div>

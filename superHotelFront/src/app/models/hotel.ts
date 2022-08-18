@@ -11,7 +11,7 @@ export class Hotel {
   numberOfRooms: number;
   numberOfStars: number;
   city: City;
-  hotelier: Array<Hotelier>;
+  hotelier: Hotelier;
 
   constructor(
     id: number,
@@ -23,7 +23,7 @@ export class Hotel {
     numberOfRooms: number,
     numberOfStars: number,
     city: City,
-    hotelier: Array<Hotelier>
+    hotelier: Hotelier
   ) {
     this.id = id;
     this.name = name;
