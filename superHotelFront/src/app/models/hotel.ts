@@ -10,6 +10,7 @@ export class Hotel {
   image: string;
   numberOfRooms: number;
   numberOfStars: number;
+  averagePrice:number;
   city: City;
   hotelier: Hotelier;
 
@@ -22,6 +23,7 @@ export class Hotel {
     image: string,
     numberOfRooms: number,
     numberOfStars: number,
+    averagePrice:number,
     city: City,
     hotelier: Hotelier
   ) {
@@ -33,6 +35,7 @@ export class Hotel {
     this.image = image;
     this.numberOfRooms = numberOfRooms;
     this.numberOfStars = numberOfStars;
+    this.averagePrice = averagePrice
     this.city = city;
     this.hotelier = hotelier;
   }

@@ -12,7 +12,8 @@ import java.io.Serializable;
 @Data
 @Entity
 @AllArgsConstructor
-@NoArgsConstructor @Builder
+@NoArgsConstructor
+@Builder
 public class Hotel implements Serializable {
 
     @Id
@@ -26,6 +27,8 @@ public class Hotel implements Serializable {
     private String image;
     private int numberOfRooms;
     private int numberOfStars;
+
+    private double averagePrice;
 
     @ManyToOne
     private City city;
@@ -45,6 +48,7 @@ public class Hotel implements Serializable {
                 ", image='" + image + '\'' +
                 ", numberOfRooms=" + numberOfRooms +
                 ", numberOfStars=" + numberOfStars +
+                ", averagePrice=" + averagePrice +
                 ", city=" + city +
                 ", hotelier=" + hotelier +
                 '}';

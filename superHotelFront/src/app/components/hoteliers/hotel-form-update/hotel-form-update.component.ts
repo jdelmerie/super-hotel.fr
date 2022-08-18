@@ -39,6 +39,7 @@ export class HotelFormUpdateComponent implements OnInit {
       phone: ['', Validators.required],
       numberOfRooms: [0, [Validators.required]],
       numberOfStars: [0, [Validators.required]],
+      averagePrice: [0, [Validators.required]],
     });
   }
 
@@ -60,6 +61,7 @@ export class HotelFormUpdateComponent implements OnInit {
               phone: this.hotel.phone,
               numberOfRooms: this.hotel.numberOfRooms,
               numberOfStars: this.hotel.numberOfStars,
+              averagePrice: this.hotel.averagePrice
             });
           } else {
             this.router.navigateByUrl('/hotelier');
@@ -87,6 +89,7 @@ export class HotelFormUpdateComponent implements OnInit {
         this.image,
         myForm.value.numberOfRooms,
         myForm.value.numberOfStars,
+        myForm.value.averagePrice,
         new City(this.cityId, '', '', []),
         new Hotelier(this.hotelierId , '', '', [], new User(this.userId, "", "", "", false, []))
       );

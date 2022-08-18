@@ -38,6 +38,7 @@ export class HotelFormComponent implements OnInit {
       image: [''],
       numberOfRooms: [0, [Validators.required]],
       numberOfStars: [0, [Validators.required]],
+      averagePrice: [0, [Validators.required]],
       city: [null, [Validators.required]],
       hotelier: [null, [Validators.required]],
     });
@@ -63,6 +64,7 @@ export class HotelFormComponent implements OnInit {
               image: '',
               numberOfRooms: this.hotel.numberOfRooms,
               numberOfStars: this.hotel.numberOfStars,
+              averagePrice: this.hotel.averagePrice,
               city: this.hotel.city.id,
               hotelier: this.hotel.hotelier.id,
             });
@@ -89,6 +91,7 @@ export class HotelFormComponent implements OnInit {
         'noimage.png',
         myForm.value.numberOfRooms,
         myForm.value.numberOfStars,
+        myForm.value.averagePrice,
         new City(myForm.value.city, '', '', []),
         new Hotelier(myForm.value.hotelier, '', '', [], new User(0, "", "", "", false, []))
       );

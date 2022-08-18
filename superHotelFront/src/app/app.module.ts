@@ -15,9 +15,10 @@ import { HotelFormComponent } from './components/admin/hotel-form/hotel-form.com
 import { HomeHotelierComponent } from './components/hoteliers/home-hotelier/home-hotelier.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HotelFormUpdateComponent } from './components/hoteliers/hotel-form-update/hotel-form-update.component';
+import { UserHomeComponent } from './components/user/user-home/user-home.component';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent, CityComponent, HoteliersComponent, HotelsAdminComponent, HotelFormComponent, HomeHotelierComponent, NotFoundComponent, HotelFormUpdateComponent],
+  declarations: [AppComponent, HomeComponent, HotelsComponent, HotelComponent, LoginComponent, CityComponent, HoteliersComponent, HotelsAdminComponent, HotelFormComponent, HomeHotelierComponent, NotFoundComponent, HotelFormUpdateComponent, UserHomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,

@@ -4,7 +4,7 @@
     <form [formGroup]="myForm" (ngSubmit)="onSave(myForm)">
       <input type="hidden" class="form-control" id="id" formControlName="id" />
       <div class="row">
-        <div class="mb-3 col-md-4">
+        <div class="mb-3 col-md-3">
           <label for="name" class="form-label">Name</label>
           <input
             type="text"
@@ -16,7 +16,7 @@
             >Name missing</span
           >
         </div>
-        <div class="mb-3 col-md-4">
+        <div class="mb-3 col-md-3">
           <label for="numberOfStars" class="form-label">Number of stars</label>
           <input
             type="number"
@@ -30,7 +30,7 @@
             >Number of stars missing</span
           >
         </div>
-        <div class="mb-3 col-md-4">
+        <div class="mb-3 col-md-3">
           <label for="numberOfRooms" class="form-label">Number of rooms</label>
           <input
             type="number"
@@ -41,6 +41,19 @@
           />
           <span class="text-danger" *ngIf="myForm.get('numberOfRooms')?.errors"
             >Number of room missing</span
+          >
+        </div>
+        <div class="mb-3 col-md-3">
+          <label for="averagePrice" class="form-label">Average price (€)</label>
+          <input
+            type="number"
+            class="form-control"
+            id="averagePrice"
+            formControlName="averagePrice"
+            min="1"
+          />
+          <span class="text-danger" *ngIf="myForm.get('averagePrice')?.errors"
+            >Average price of room missing</span
           >
         </div>
       </div>

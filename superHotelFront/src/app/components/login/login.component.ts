@@ -35,8 +35,8 @@ export class LoginComponent implements OnInit {
         this.router.navigateByUrl('/hotelier');
       }
 
-      if (this.auth.isHotelier()) {
-        console.log('components user');
+      if (this.auth.isUser()) {
+        // this.router.navigateByUrl('/user');
       }
     }
   }

@@ -12,6 +12,7 @@ import { HotelFormComponent } from './components/admin/hotel-form/hotel-form.com
 import { HomeHotelierComponent } from './components/hoteliers/home-hotelier/home-hotelier.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HotelFormUpdateComponent } from './components/hoteliers/hotel-form-update/hotel-form-update.component';
+import { UserHomeComponent } from './components/user/user-home/user-home.component';
 
 const routes: Routes = [
   {
@@ -63,6 +64,11 @@ const routes: Routes = [
   {
     path: 'hotelier/hotel/:id',
     component: HotelFormUpdateComponent,
+    canActivate: [AuthGuardService],
+  },
+  {
+    path: 'user',
+    component: UserHomeComponent,
     canActivate: [AuthGuardService],
   },
   {

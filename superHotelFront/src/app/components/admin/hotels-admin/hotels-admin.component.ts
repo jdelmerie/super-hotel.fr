@@ -33,7 +33,7 @@ export class HotelsAdminComponent implements OnInit {
 
   getAllHotels() {
     this.api.getHotels().subscribe({
-      next: (data) => (this.hotels = data),
+      next: (data) => (this.hotels = data, console.log(data)),
       error: (err) => (this.error = err.message),
       complete: () => (this.error = null),
     });
