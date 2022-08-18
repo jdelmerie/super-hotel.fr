@@ -21,6 +21,7 @@ export class HotelFormComponent implements OnInit {
   hoteliers: Hotelier[] | undefined;
   status: boolean = false;
   hotel: Hotel | undefined;
+  image: string = "";
 
   constructor(
     private route: ActivatedRoute,
@@ -35,7 +36,6 @@ export class HotelFormComponent implements OnInit {
       address: ['', [Validators.required]],
       email: ['', [Validators.required]],
       phone: ['', Validators.required],
-      image: [''],
       numberOfRooms: [0, [Validators.required]],
       numberOfStars: [0, [Validators.required]],
       averagePrice: [0, [Validators.required]],
@@ -55,13 +55,13 @@ export class HotelFormComponent implements OnInit {
         this.api.getHotel(id).subscribe({
           next: (data) => {
             this.hotel = data;
+            this.image = this.hotel.image;
             this.myForm.setValue({
               id: this.hotel.id,
               name: this.hotel.name,
               address: this.hotel.address,
               email: this.hotel.email,
               phone: this.hotel.phone,
-              image: '',
               numberOfRooms: this.hotel.numberOfRooms,
               numberOfStars: this.hotel.numberOfStars,
               averagePrice: this.hotel.averagePrice,
@@ -88,7 +88,7 @@ export class HotelFormComponent implements OnInit {
         myForm.value.address,
         myForm.value.email,
         myForm.value.phone,
-        'noimage.png',
+        this.image,
         myForm.value.numberOfRooms,
         myForm.value.numberOfStars,
         myForm.value.averagePrice,
